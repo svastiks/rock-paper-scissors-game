@@ -1,52 +1,72 @@
+function getComputerChoice() {
 
-function getComputerChoice(){
-
-    let number = Math.random() * 15;
-
-    if(number >= 5){
-        return 'paper';
+    let number = Math.floor(Math.random() * 3);
+    let choice = "";
+    if (number == 1) {
+        choice = "paper";
     }
-    else if(number >= 6 && number <= 10){
-        return 'scissors'
+    else if (number == 2) {
+        choice = "scissors";
     }
-    else{
-        return 'rock';
+    else {
+        choice = "rock";
     }
+    return choice;
 }
 
-function playRound(player, computer){
+function playRound(player, computer) {
 
-    if(player.toLowerCase === 'rock' && computer.toLowerCase === 'paper'){
-        return console.log('Computer wins!');
+    console.log(`Computer has chosen => ` + computer);
+    player.toLowerCase();
+    computer.toLowerCase();
+    const allChoices = ["rock", "paper", "scissors"];
+    if (player === "rock" && computer === "paper") {
+        console.log("Computer wins!, as paper beats paper.");
     }
-    else if(player.toLowerCase === 'scissors' && computer.toLowerCase === 'rock'){
-        return console.log('Computer wins!');
+    else if (player === "scissors" && computer === "rock") {
+        console.log("Computer wins!, as rock beats scissors.");
     }
-    else if(player.toLowerCase === 'paper' && computer.toLowerCase === 'scissors'){
-        return console.log('Computer wins!');
+    else if (player === "paper" && computer === "scissors") {
+        console.log("Computer wins!, as scissors beat paper.");
     }
-    else if(player.toLowerCase === 'paper' && computer.toLowerCase === 'rock'){
-        return console.log('Player wins!')
+    else if (player === "paper" && computer === "rock") {
+        console.log("Player wins!, as paper beats rock.")
     }
-    else if(player.toLowerCase === 'rock' && computer.toLowerCase === 'scissors'){
-        return console.log('Player wins!');
+    else if (player === "rock" && computer === "scissors") {
+        console.log("Player wins!, as rock beats scissors.");
     }
-    else{
-        return console.log('Player wins!');
+    else if (player === computer) {
+        console.log(`It's a tie!!, because ` + player + " and " + computer + " are the same.");
+    }
+    else {
+        console.log("Wrong input.")
     }
 
 }
 
-const player = prompt('Enter choice:');
+const options = document.getElementsByClassName("options");
 
+
+// const player = $(`<select name=option>
+
+// <option value="rock"> Rock </select>
+// <option value="scissors"> Scissors </select>
+// <option value="rock"> Paper </select>
+// `).appendTo(".options");
+
+const player = window.prompt("PLEASE TYPE IN AN OPTION: ");
+
+console.log("Player has chosen => " + player);
 const computer = getComputerChoice();
 
-console.log(player, computer);
+playRound(player, computer);
 
-function game(){
+function game() {
 
-    for(i = 0; i < 4; i++){
+    for (i = 0; i < 4; i++) {
         playRound();
     }
 
 }
+//console.log(playRound);
+//console.log(game);
